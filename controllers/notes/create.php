@@ -7,7 +7,7 @@ $db = new Database($config['database'], $config['user'], $config['password']);
 
 $MAX_LENGTH_ALLOWED = "255";
 $MIN_LENGTH_ALLOWED = "1";
-$heading = "Create a new note";
+$heading = "Create Note";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $errors = [];
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   
   if (empty($errors)) {
-    $db->query("INSERT INTO myapp.notes (body, user_id) VALUES (:body, :user_id)", [
+    $db->query("INSERT INTO notes (body, user_id) VALUES (:body, :user_id)", [
       "body" => $_POST['body'],
       "user_id" => 1
     ]);
