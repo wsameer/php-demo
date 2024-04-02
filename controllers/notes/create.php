@@ -12,17 +12,20 @@ $heading = "Create Note";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $errors = [];
 
-  if ($Validator::string($_POST['body'])) {
+  if (Validator::string($_POST['body'])) {
+    dd("Hrereasdda");
     $errors['body'] = 'A body is required';
   }
 
-  if (! $Validator::validateLength($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
+  if (! Validator::validateLength($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
+    dd("Hreres");
     $errors['body'] = 'Your note cannot be more than ' . $MAX_LENGTH_ALLOWED . ' characters!';
   }
 
-  if (! $Validator::email($_POST['body'])) {
-    $errors['email'] = 'Invalid email address!';
-  }
+  // if (! Validator::email($_POST['body'])) {
+  //   dd("Hrere");
+  //   $errors['email'] = 'Invalid email address!';
+  // }
   
   if (empty($errors)) {
     $db->query("INSERT INTO notes (body, user_id) VALUES (:body, :user_id)", [
