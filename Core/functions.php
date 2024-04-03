@@ -1,5 +1,7 @@
 <?php 
 
+use Core\Response;
+
 function dd($param) {
   echo "<pre>";
   var_dump($param);
@@ -16,6 +18,8 @@ function authorize($condition, $statusCode = Response::FORBIDDEN) {
   if (!$condition) {
     abort($statusCode);
   }
+
+  return true;
 }
 
 function base_path($path) {
