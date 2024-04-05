@@ -11,6 +11,10 @@ $password = $_POST['password'];
 
 $errors = [];
 
+if (Validator::empty($email)) {
+  $errors['email'] = "Email address cannot be empty";
+}
+
 if (!Validator::email($email)) {
   $errors['email'] = "Please provide a valid email address";
 }
