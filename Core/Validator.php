@@ -9,6 +9,7 @@ class Validator {
   }
 
   public static function validateLength($value, $min = 1, $max = 255) {
+    $value= trim($value);
     return strlen($value) >= $min && strlen($value) <= $max;
   }
 
