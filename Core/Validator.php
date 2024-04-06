@@ -4,6 +4,9 @@ namespace Core;
 
 class Validator {
 
+  /**
+   * Returns true if the value is empty
+   */
   public static function string($value) {
     return strlen(trim($value)) === 0;
   }
