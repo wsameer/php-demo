@@ -21,11 +21,7 @@ authorize($note['user_id'] === $currentUserId);
 // validate the form
 $errors = [];
 
-if (Validator::string($_POST['body'])) {
-  $errors['body'] = 'A body is required';
-}
-
-if (! Validator::validateLength($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
+if (!Validator::string($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
   $errors['body'] = 'Your note cannot be more than ' . $MAX_LENGTH_ALLOWED . ' characters!';
 }
 
@@ -43,6 +39,5 @@ $db->query('update notes set body = :body where id = :id', [
   'body' => $_POST['body']
 ]);
 
-// redirect the user
 header('location: /notes');
 die();

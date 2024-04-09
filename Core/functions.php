@@ -14,7 +14,7 @@ function urlIs($value) {
   return $_SERVER['REQUEST_URI'] === $value;
 }
 
-function abort() {
+function abort($code = 404) {
   http_response_code($code);
   require base_path("views/{$code}.php");
   die();
@@ -38,7 +38,7 @@ function view($path, $attributes = []) {
 }
 
 function redirect($path) {
-  header('location {$path}');
+  header("location: {$path}");
   exit();
 }
 

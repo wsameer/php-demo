@@ -10,14 +10,14 @@ final class Router {
 
   protected $routes = [];
 
-  private function add($method, $uri, $controller, $middleware = null) {
+  private function add($method, $uri, $controller) {
     // $this->routes[] = compact($uri, $controller, $method);
     // same as above
     $this->routes[] = [
       'uri' => $uri,
       'controller' => $controller,
       'method' => $method,
-      'middleware' => $middleware
+      'middleware' => null
     ];
 
     return $this;
@@ -57,6 +57,10 @@ final class Router {
     }
 
     $this->abort();
+  }
+
+  public function previousUrl() {
+    return $_SERVER['HTTP_REFERER'];
   }
 
   protected function abort($code = Response::NOT_FOUND) {

@@ -3,6 +3,10 @@
 namespace Core;
 
 final class Session {
+
+  public static function put($key, $value) {
+    $_SESSION[$key] = $value;
+  }
   
   public static function get($key, $default = null) {
     return $_SESSION['_flash'][$key] ?? $_SESSION[$key] ?? $default;
@@ -12,7 +16,7 @@ final class Session {
     $_SESSION['_flash'][$key] = $value;
   }
 
-  public static function unFlash($key) {
+  public static function unFlash() {
     unset($_SESSION['_flash']);
   }
 

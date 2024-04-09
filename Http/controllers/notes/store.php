@@ -11,11 +11,7 @@ $db = App::resolve(Database::class);
 
 $errors = [];
 
-if (Validator::string($_POST['body'])) {
-  $errors['body'] = 'A body is required';
-}
-
-if (! Validator::validateLength($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
+if (! Validator::string($_POST['body'], $MIN_LENGTH_ALLOWED, $MAX_LENGTH_ALLOWED)) {
   $errors['body'] = 'Your note cannot be more than ' . $MAX_LENGTH_ALLOWED . ' characters!';
 }
 
