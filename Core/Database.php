@@ -1,6 +1,7 @@
 <?php 
 
 namespace Core;
+
 use PDO;
 
 final class Database {
